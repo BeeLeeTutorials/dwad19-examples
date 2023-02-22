@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Sign Up</title>
+  <style>
+    label {
+      width: 150px;
+      display: inline-block;
+    }
+
+    form div {
+      margin-bottom: 8px;
+    }
+
+    input[aria-invalid="true"] {
+      border-color: red;
+    }
+  </style>
+
+  <script>
+    function element(id) {
+      return document.getElementById(id);
+    }
+
+    function setInvalid(isInvalid) {
+      element('password').setAttribute('aria-invalid', isInvalid ? 'true' : 'false');
+      element('confirm_password').setAttribute('aria-invalid', isInvalid ? 'true' : 'false');
+    }
+
+    function onSubmitForm(e) {
+      setInvalid(false);
+      const username = element('username').value;
+      const password = element('password').value;
+      const confirmPassword = element('confirm_password').value;
+
+      if (password !== confirmPassword) {
+        setInvalid(true);
+        e.preventDefault();
+      }
+    }
+  </script>
+</head>
+
+<body>
+  {{#if success}}
+  <div>
+    <h1>You've successfully signed up!</h1>
+  </div>
+  {{/if}}
+  <form method="post" onsubmit="onSubmitForm(event)">
+    <div>
+      <label for="username">Username</label>
+      <input type="text" placeholder="Enter a username" id="username" name="username" />
+    </div>
+
+    <div>
+      <label for="password">Password</label>
+      <input type="password" placeholder="Enter a password" id="password" name="password" />
+    </div>
+
+    <div>
+      <label for="password">Confirm Password</label>
+      <input type="password" id="confirm_password" />
+    </div>
+
+    <input type="submit" />
+  </form>
+</body>
+
+</html>
