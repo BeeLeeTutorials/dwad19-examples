@@ -1,15 +1,17 @@
 const express = require('express');
-const routes = require('./routes');
+const routes = require('./routes/index');
 require('dotenv').config();
 
 const app = express();
-app.set('view engine', 'hbs')
+app.set('view engine', 'hbs');
 
 // middlewares
-app.use(express.urlencoded({extended: false}));
+app.use(express.static(__dirname));
+
+app.use(express.urlencoded({ extended: false }));
 app.use(routes);
 
-const port = process.env.PORT;
+const port = process.env.PORT || 3000;
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);
 })

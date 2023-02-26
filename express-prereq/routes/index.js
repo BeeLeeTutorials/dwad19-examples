@@ -2,7 +2,7 @@ const {Router} = require('express');
 
 const router = Router();
 
-router.get('/', (_, res) => {
+router.get('/', (req, res) => {
   res.render('index.hbs', {name: 'World'});
 });
 router.get('/signup', (_, res) => {
@@ -10,7 +10,8 @@ router.get('/signup', (_, res) => {
 })
 
 router.post('/signup', (req, res) => {
-  const {username, password} = req.body;
+  const username = req.body.username;
+  const password = req.body.password;
 
   console.log(`Attempted signup: ${username} ${password}`);
   
