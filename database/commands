@@ -1,0 +1,6 @@
+docker run --name mongo -d -p 27017:27017 arm64v8/mongo:latest
+docker run --name mysql -e MYSQL_ROOT_PASSWORD=root -d -p 3306:3306 \
+  -v /Users/beelee.ong/Documents/Personal/dwad19-examples/database/my.cnf:/etc/mysql/conf.d/my.cnf arm64v8/mysql:latest
+
+
+select books.name, book_tags.tag from books join book_tags on books.id = book_tags.book;
