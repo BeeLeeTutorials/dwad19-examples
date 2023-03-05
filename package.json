@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start-react-prereq": "cd react-prereq && ../node_modules/.bin/webpack-dev-server .",
-    "start-express-prereq": "cd express-prereq && nodemon index.js",
-    "start-forms-prereq": "cd forms-prereq && nodemon index.js"
+    "start-react": "cd react-eg && ../node_modules/.bin/webpack-dev-server .",
+    "start-express": "cd express-eg && nodemon index.js",
+    "start-forms": "cd forms-eg && nodemon index.js"
   },
   "author": "",
   "license": "ISC",
