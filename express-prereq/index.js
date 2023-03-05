@@ -6,7 +6,7 @@ const app = express();
 app.set('view engine', 'hbs');
 
 // middlewares
-app.use(express.static(__dirname));
+app.use(express.static('.'));
 
 app.use(express.urlencoded({ extended: false }));
 app.use(routes);
