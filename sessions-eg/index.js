@@ -1,6 +1,9 @@
 const express = require('express');
 const session = require('express-session');
+const crypto = require('crypto'); // for generating csrf tokens
 const FileStore = require('session-file-store')(session);
+
+const newToken = () => crypto.randomBytes(48).toString('hex');
 
 const { handlebars } = require('hbs');
 
@@ -52,6 +55,41 @@ app.post('/login', (req, res) => {
   };
   req.session.save(() => {
     res.redirect('/');
+  });
+});
+
+// Transfer cash page
+app.get('/transfer', (req, res) => {
+  if (!req.session.user) {
+    return res.status(403).send("Forbidden");
+  }
+
+  // var csrfToken = newToken();
+  // req.session.csrf = csrfToken;
+
+  res.render('transfer.hbs', {
+    // csrf: csrfToken,
+  });
+});
+app.post('/transfer', (req, res) => {
+  if (!req.session.user) {
+    return res.status(403).send("Forbidden");
+  }
+
+  const { recipient, amount, csrf } = req.body;
+
+  // Validate the csrf token
+  // var userCsrfToken = req.session.csrf;
+  // req.session.csrf = newToken(); // To invalidate current token
+  // if (userCsrfToken !== csrf) {
+  //   return res.status(403).send("CSRF mismatch");
+  // }
+
+  console.log(`Transferring money to ${recipient}`)
+
+  res.render('transfer-success.hbs', {
+    recipient,
+    amount,
   });
 });
 

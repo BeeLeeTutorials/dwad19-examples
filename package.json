@@ -8,7 +8,8 @@
     "start-react": "cd react-eg && ../node_modules/.bin/webpack-dev-server .",
     "start-express": "cd express-eg && nodemon index.js",
     "start-forms": "cd forms-eg && nodemon index.js",
-    "start-sessions": "cd sessions-eg && nodemon --ignore sessions index.js"
+    "start-sessions": "cd sessions-eg && nodemon --ignore 'sessions/**' index.js",
+    "start-static": "cd static-server && ../node_modules/.bin/static-server -p 8080"
   },
   "author": "",
   "license": "ISC",
@@ -28,7 +29,8 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.8.1",
-    "session-file-store": "^1.5.0"
+    "session-file-store": "^1.5.0",
+    "static-server": "^2.2.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.21.0",

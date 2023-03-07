@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+</head>
+
+<body>
+  <div style="padding: 80px">
+    <h1>Transfer Money</h1>
+    <form method="POST">
+      <div>
+        <label for="recipient">Recipient Account</label>
+        <input type="text" id="recipient" name="recipient" />
+      </div>
+
+      <div>
+        <label for="amount">Amount</label>
+        <input type="number" id="amount" name="amount" />
+      </div>
+
+      {{#if csrf}}
+      <input type="hidden" name="csrf" value="{{csrf}}" />
+      {{/if}}
+
+      <div>
+        <input type="submit" />
+      </div>
+    </form>
+  </div>
+</body>
+
+</html>
