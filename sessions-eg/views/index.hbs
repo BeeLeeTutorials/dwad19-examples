@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+</head>
+
+<body>
+  <div style="padding: 80px">
+    {{#if loggedIn}}
+
+    <div>
+      <a href="/logout">Logout</a>
+    </div>
+    <p>Hello {{username}}</p>
+
+    {{else}}
+
+    <div>
+      <a href="/login">Login</a>
+    </div>
+
+    {{/if}}
+  </div>
+</body>
+
+</html>
